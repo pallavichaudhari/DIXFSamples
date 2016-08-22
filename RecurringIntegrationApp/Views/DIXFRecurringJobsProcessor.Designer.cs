@@ -54,6 +54,8 @@
             this.label12 = new System.Windows.Forms.Label();
             this.entityNameTextBox = new System.Windows.Forms.TextBox();
             this.clientGroupBox = new System.Windows.Forms.GroupBox();
+            this.failedLocationBtn = new System.Windows.Forms.Button();
+            this.inProcessLocationBtn = new System.Windows.Forms.Button();
             this.successLocationBtn = new System.Windows.Forms.Button();
             this.inputLocBtn = new System.Windows.Forms.Button();
             this.statusPollingIntervalTextBox = new System.Windows.Forms.TextBox();
@@ -81,8 +83,7 @@
             this.stopButton = new System.Windows.Forms.Button();
             this.startButton = new System.Windows.Forms.Button();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
-            this.inProcessLocationBtn = new System.Windows.Forms.Button();
-            this.failedLocationBtn = new System.Windows.Forms.Button();
+            this.btnSaveConfig = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.settingsTabPage.SuspendLayout();
             this.serverGroupBox.SuspendLayout();
@@ -250,6 +251,7 @@
             // 
             // fileTransferGroupBox
             // 
+            this.fileTransferGroupBox.Controls.Add(this.btnSaveConfig);
             this.fileTransferGroupBox.Controls.Add(this.isDataPackageInputCheckBox);
             this.fileTransferGroupBox.Controls.Add(this.label16);
             this.fileTransferGroupBox.Controls.Add(this.companyTextBox);
@@ -365,6 +367,26 @@
             this.clientGroupBox.TabStop = false;
             this.clientGroupBox.Text = "Client side settings";
             // 
+            // failedLocationBtn
+            // 
+            this.failedLocationBtn.Image = global::RecurringIntegrationApp.Properties.Resources.folder_search1;
+            this.failedLocationBtn.Location = new System.Drawing.Point(1022, 81);
+            this.failedLocationBtn.Name = "failedLocationBtn";
+            this.failedLocationBtn.Size = new System.Drawing.Size(40, 26);
+            this.failedLocationBtn.TabIndex = 13;
+            this.failedLocationBtn.UseVisualStyleBackColor = true;
+            this.failedLocationBtn.Click += new System.EventHandler(this.failedLocationBtn_Click);
+            // 
+            // inProcessLocationBtn
+            // 
+            this.inProcessLocationBtn.Image = global::RecurringIntegrationApp.Properties.Resources.folder_search1;
+            this.inProcessLocationBtn.Location = new System.Drawing.Point(1022, 29);
+            this.inProcessLocationBtn.Name = "inProcessLocationBtn";
+            this.inProcessLocationBtn.Size = new System.Drawing.Size(40, 26);
+            this.inProcessLocationBtn.TabIndex = 12;
+            this.inProcessLocationBtn.UseVisualStyleBackColor = true;
+            this.inProcessLocationBtn.Click += new System.EventHandler(this.inProcessLocationBtn_Click);
+            // 
             // successLocationBtn
             // 
             this.successLocationBtn.Image = global::RecurringIntegrationApp.Properties.Resources.folder_search1;
@@ -464,7 +486,6 @@
             this.inputLocationTextBox.Name = "inputLocationTextBox";
             this.inputLocationTextBox.Size = new System.Drawing.Size(281, 23);
             this.inputLocationTextBox.TabIndex = 1;
-            this.inputLocationTextBox.TextChanged += new System.EventHandler(this.inputLocationTextBox_TextChanged);
             // 
             // label1
             // 
@@ -631,25 +652,15 @@
             this.startButton.UseVisualStyleBackColor = true;
             this.startButton.Click += new System.EventHandler(this.startButton_Click);
             // 
-            // inProcessLocationBtn
+            // btnSaveConfig
             // 
-            this.inProcessLocationBtn.Image = global::RecurringIntegrationApp.Properties.Resources.folder_search1;
-            this.inProcessLocationBtn.Location = new System.Drawing.Point(1022, 29);
-            this.inProcessLocationBtn.Name = "inProcessLocationBtn";
-            this.inProcessLocationBtn.Size = new System.Drawing.Size(40, 26);
-            this.inProcessLocationBtn.TabIndex = 12;
-            this.inProcessLocationBtn.UseVisualStyleBackColor = true;
-            this.inProcessLocationBtn.Click += new System.EventHandler(this.inProcessLocationBtn_Click);
-            // 
-            // failedLocationBtn
-            // 
-            this.failedLocationBtn.Image = global::RecurringIntegrationApp.Properties.Resources.folder_search1;
-            this.failedLocationBtn.Location = new System.Drawing.Point(1022, 81);
-            this.failedLocationBtn.Name = "failedLocationBtn";
-            this.failedLocationBtn.Size = new System.Drawing.Size(40, 26);
-            this.failedLocationBtn.TabIndex = 13;
-            this.failedLocationBtn.UseVisualStyleBackColor = true;
-            this.failedLocationBtn.Click += new System.EventHandler(this.failedLocationBtn_Click);
+            this.btnSaveConfig.Location = new System.Drawing.Point(942, 119);
+            this.btnSaveConfig.Name = "btnSaveConfig";
+            this.btnSaveConfig.Size = new System.Drawing.Size(158, 43);
+            this.btnSaveConfig.TabIndex = 4;
+            this.btnSaveConfig.Text = "Save Configuration";
+            this.btnSaveConfig.UseVisualStyleBackColor = true;
+            this.btnSaveConfig.Click += new System.EventHandler(this.btnSaveConfig_Click);
             // 
             // DIXFRecurringJobsProcessor
             // 
@@ -734,6 +745,7 @@
         private System.Windows.Forms.Button successLocationBtn;
         private System.Windows.Forms.Button failedLocationBtn;
         private System.Windows.Forms.Button inProcessLocationBtn;
+        private System.Windows.Forms.Button btnSaveConfig;
     }
 }
 

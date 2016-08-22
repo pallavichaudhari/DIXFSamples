@@ -65,46 +65,55 @@ namespace RecurringIntegrationApp
         private void azureAuthEndpointTextBox_TextChanged(object sender, EventArgs e)
         {
             Settings.AzureAuthEndpoint = azureAuthEndpointTextBox.Text;
+            
         }
 
         private void ax7EndpointTextBox_TextChanged(object sender, EventArgs e)
         {
             Settings.RainierUri = ax7EndpointTextBox.Text;
+            
         }
 
         private void ax7UserNameTextBox_TextChanged(object sender, EventArgs e)
         {
             Settings.RainierUserName = ax7UserNameTextBox.Text;
+            
         }
 
         private void ax7UserpasswordTextBox_TextChanged(object sender, EventArgs e)
         {
             Settings.RainierUserPassword = ax7UserpasswordTextBox.Text;
+            
         }
 
         private void clientAppIdtextBox_TextChanged(object sender, EventArgs e)
         {
             Settings.ClientId = clientAppIdtextBox.Text;
+            
         }
 
         private void entityNameTextBox_TextChanged(object sender, EventArgs e)
         {
             Settings.EntityName = entityNameTextBox.Text;
+            
         }
 
         private void companyTextBox_TextChanged(object sender, EventArgs e)
         {
             Settings.Company = companyTextBox.Text;
+            
         }
 
         private void aadTenantTextBox_TextChanged(object sender, EventArgs e)
         {
             Settings.AadTenant = aadTenantTextBox.Text;
+            
         }
 
         private void statusPollingIntervalTextBox_TextChanged(object sender, EventArgs e)
         {
             Settings.StatusPollingInterval = Convert.ToInt32(this.statusPollingIntervalTextBox.Text);
+            
         }
 
         private void RecurringJobQueueIdTextBox_TextChanged(object sender, EventArgs e)
@@ -113,6 +122,7 @@ namespace RecurringIntegrationApp
             if(Guid.TryParse(this.recurringJobQueueIdTextBox.Text, out _guid))
             {
                 Settings.RecurringJobId = _guid;
+                
             }
         }
 
@@ -208,24 +218,14 @@ namespace RecurringIntegrationApp
             Application.Exit();
         }
 
-        private void inputLocationTextBox_TextChanged(object sender, EventArgs e)
-        {
-            Settings.InputDir = this.inputLocationTextBox.Text;
-        }
-
-        private void inputLocBtn_Click(object sender, EventArgs e)
-        {
-            if(folderBrowserDialog.ShowDialog() == DialogResult.OK)
-            {
-                inputLocationTextBox.Text = folderBrowserDialog.SelectedPath;
-            }
-        }
-
+              
         private void successLocationBtn_Click(object sender, EventArgs e)
         {
             if(folderBrowserDialog.ShowDialog() == DialogResult.OK)
             {
                 successLocationTextBox.Text = folderBrowserDialog.SelectedPath;
+                Settings.SuccessDir = successLocationTextBox.Text;
+                
             }
         }
 
@@ -234,6 +234,8 @@ namespace RecurringIntegrationApp
             if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
             {
                 inProcessLocationTextBox.Text = folderBrowserDialog.SelectedPath;
+                Settings.InProcessDir = inProcessLocationTextBox.Text;
+                
             }
         }
 
@@ -242,12 +244,47 @@ namespace RecurringIntegrationApp
             if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
             {
                 failedLocationTextBox.Text = folderBrowserDialog.SelectedPath;
+                Settings.ErrorDir = failedLocationTextBox.Text;
+                
             }
         }
 
         private void isDataPackageInputCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             Settings.IsDataPackage = isDataPackageInputCheckBox.Checked;
+        }
+
+        private void inputLocBtn_Click(object sender, EventArgs e)
+        {
+            if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                inputLocationTextBox.Text = folderBrowserDialog.SelectedPath;
+                Settings.InputDir = this.inputLocationTextBox.Text;                
+            }
+        }
+
+        private void btnSaveConfig_Click(object sender, EventArgs e)
+        {
+            SettingManager.WriteSetting("Input Directory", this.inputLocationTextBox.Text);
+            SettingManager.WriteSetting("InProcess Directory", inProcessLocationTextBox.Text);
+            SettingManager.WriteSetting("Error Directory", failedLocationTextBox.Text);
+            SettingManager.WriteSetting("Success Directory", successLocationTextBox.Text);
+            SettingManager.WriteSetting("Status Polling Interval", statusPollingIntervalTextBox.Text);
+
+            SettingManager.WriteSetting("Aad Tenant", aadTenantTextBox.Text);
+            SettingManager.WriteSetting("Azure Auth Endpoint", azureAuthEndpointTextBox.Text);
+            SettingManager.WriteSetting("Azure Client Id", clientAppIdtextBox.Text);
+            SettingManager.WriteSetting("Rainier Uri", ax7EndpointTextBox.Text);
+            SettingManager.WriteSetting("User", ax7UserNameTextBox.Text);
+            SettingManager.WriteSetting("Password", ax7UserpasswordTextBox.Text);
+
+            SettingManager.WriteSetting("Recurring Job Id", this.recurringJobQueueIdTextBox.Text);
+            SettingManager.WriteSetting("Entity Name", entityNameTextBox.Text);
+            SettingManager.WriteSetting("Is Data Package", Convert.ToString(isDataPackageInputCheckBox.Checked));
+            SettingManager.WriteSetting("Company", companyTextBox.Text);
+            
+            
+            
         }
     }
 
